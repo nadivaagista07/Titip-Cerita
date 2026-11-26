@@ -1,0 +1,6 @@
+{
+  "name": "TitipCerita",
+  "description": "Ruang kecil untuk cerita besar. Aplikasi pendampingan sebaya untuk Story, Chat, dan Study bersama tanpa dihakimi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
