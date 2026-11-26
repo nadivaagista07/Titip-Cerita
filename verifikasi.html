@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifikasi Buddy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-white font-sans text-gray-900 flex">
+
+    <!-- SIDEBAR -->
+    <aside class="w-64 h-screen bg-[#F3F4F6] border-r border-gray-200 flex flex-col justify-between p-4 fixed left-0 top-0">
+        <div>
+            <div class="px-4 py-6">
+                <h1 class="text-2xl font-bold font-mooxy">TitipCerita</h1>
+                <p class="text-xs text-gray-500 font-medium mt-1">ADMIN WORKSPACE</p>
+            </div>
+            <div class="relative mb-6 px-2">
+                <i data-lucide="search" class="absolute left-4 top-2.5 text-gray-400 w-5 h-5"></i>
+                <input type="text" placeholder="Search here..." class="w-full pl-10 pr-4 py-2 bg-white border border-gray-200 rounded-full text-sm focus:outline-none">
+            </div>
+            <nav class="space-y-2">
+                <!-- Ubah href ke index.html -->
+                <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-200">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Dashboard
+                </a>
+                <!-- Menu Verifikasi jadi aktif (warna biru) -->
+                <a href="verifikasi.html" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#DBEAFE] text-blue-900 font-semibold">
+                    <i data-lucide="shield-check" class="w-5 h-5"></i> Verifikasi Buddy
+                </a>
+                <a href="kelola-pengguna.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-200">
+                    <i data-lucide="users" class="w-5 h-5"></i> Kelola Pengguna
+                </a>
+                <a href="laporan-kasus.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-200">
+                    <i data-lucide="file-text" class="w-5 h-5"></i> Laporan Kasus
+                </a>
+                <a href="pemesanan.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-200">
+                    <i data-lucide="calendar" class="w-5 h-5"></i> Pemesanan
+                </a>
+            </nav>
+        </div>
+        <div class="space-y-2">
+            <a href="pengaturan.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-200">
+                <i data-lucide="settings" class="w-5 h-5"></i> Pengaturan
+            </a>
+            <a href="keluar.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50">
+                <i data-lucide="log-out" class="w-5 h-5"></i> Keluar
+            </a>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="ml-64 p-8 w-full">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-8">
+            <h2 class="text-lg font-semibold text-gray-800">Operasional</h2>
+            <div class="flex items-center gap-4">
+                <button class="p-2 border border-gray-300 rounded-full hover:bg-gray-50">
+                    <i data-lucide="bell" class="w-5 h-5 text-gray-600"></i>
+                </button>
+                <div class="flex items-center gap-3 border border-gray-300 rounded-full px-4 py-1.5">
+                    <i data-lucide="user-circle" class="w-6 h-6 text-gray-500"></i>
+                    <div>
+                        <p class="text-sm font-semibold leading-none">Rani Putri</p>
+                        <p class="text-xs text-gray-500 mt-0.5">Admin</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Judul Halaman -->
+        <div class="mb-6">
+            <h1 class="text-2xl font-bold">Verifikasi Buddy</h1>
+            <p class="text-gray-500 mt-1">Tinjau kelayakan dan dokumen sebelum buddy mulai menerima sesi.</p>
+        </div>
+
+        <!-- Filter Tab -->
+        <div class="flex gap-3 mb-6">
+            <button class="px-4 py-2 bg-[#E6F4EA] text-[#166534] font-medium text-sm rounded-lg border border-[#b2dfcc]">Menunggu · 12</button>
+            <button class="px-4 py-2 bg-white text-gray-600 font-medium text-sm rounded-lg border border-gray-300 hover:bg-gray-50">Perbaikan · 3</button>
+            <button class="px-4 py-2 bg-white text-gray-600 font-medium text-sm rounded-lg border border-gray-300 hover:bg-gray-50">Disetujui · 86</button>
+            <button class="px-4 py-2 bg-white text-gray-600 font-medium text-sm rounded-lg border border-gray-300 hover:bg-gray-50">Ditolak · 2</button>
+            <button class="px-4 py-2 bg-white text-gray-600 font-medium text-sm rounded-lg border border-gray-300 hover:bg-gray-50">Terbaru</button>
+        </div>
+
+        <!-- Grid Layout (Kiri Tabel, Kanan Detail) -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Kolom Kiri (Tabel & Info) -->
+            <div class="lg:col-span-2 space-y-6">
+                
+                <!-- Tabel Antrean -->
+                <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden">
+                    <table class="w-full text-sm text-left">
+                        <thead class="border-b border-gray-200 text-gray-500 font-medium">
+                            <tr>
+                                <th class="px-6 py-4">Calon buddy</th>
+                                <th class="px-4 py-4">Usia / Identitas</th>
+                                <th class="px-4 py-4">Dokumen / Izin</th>
+                                <th class="px-4 py-4">Status</th>
+                                <th class="px-6 py-4 text-right">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Baris Aktif (Warna Hijau Muda) -->
+                            <tr class="border-b border-gray-100 bg-[#F0FDF4]">
+                                <td class="px-6 py-4">
+                                    <p class="font-semibold text-gray-900">Farah · BD-028</p>
+                                    <p class="text-gray-500 text-xs mt-1">18 Okt · 08.40</p>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <p class="text-gray-900">22 tahun</p>
+                                    <p class="text-gray-500 text-xs mt-1">Identitas cocok</p>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <p class="text-gray-900">3/3 tersedia</p>
+                                    <p class="text-gray-500 text-xs mt-1">Izin: tidak wajib</p>
+                                </td>
+                                <td class="px-4 py-4 text-gray-900">Menunggu</td>
+                                <td class="px-6 py-4 text-right">
+                                    <a href="#" class="font-semibold text-gray-900 hover:underline">Tinjau →</a>
+                                </td>
+                            </tr>
+                            <!-- Baris Biasa -->
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="px-6 py-4">
+                                    <p class="font-semibold text-gray-900">Adit · BD-029</p>
+                                    <p class="text-gray-500 text-xs mt-1">18 Okt · 08.55</p>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <p class="text-gray-900">17 tahun</p>
+                                    <p class="text-gray-500 text-xs mt-1">Identitas cocok</p>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <p class="text-gray-900">2/3 tersedia</p>
+                                    <p class="text-gray-500 text-xs mt-1">Izin: belum ada</p>
+                                </td>
+                                <td class="px-4 py-4 text-gray-900">Menunggu</td>
+                                <td class="px-6 py-4 text-right">
+                                    <a href="#" class="font-semibold text-gray-900 hover:underline">Tinjau →</a>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="px-6 py-4">
+                                    <p class="font-semibold text-gray-900">Laras · BD-030</p>
+                                    <p class="text-gray-500 text-xs mt-1">18 Okt · 09.10</p>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <p class="text-gray-900">21 tahun</p>
+                                    <p class="text-gray-500 text-xs mt-1">Perlu foto ulang</p>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <p class="text-gray-900">2/3 terbaca</p>
+                                    <p class="text-gray-500 text-xs mt-1">Izin: tidak wajib</p>
+                                </td>
+                                <td class="px-4 py-4 text-gray-900">Menunggu</td>
+                                <td class="px-6 py-4 text-right">
+                                    <a href="#" class="font-semibold text-gray-900 hover:underline">Tinjau →</a>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="px-6 py-4">
+                                    <p class="font-semibold text-gray-900">Reza · BD-031</p>
+                                    <p class="text-gray-500 text-xs mt-1">18 Okt · 09.25</p>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <p class="text-gray-900">24 tahun</p>
+                                    <p class="text-gray-500 text-xs mt-1">Belum diperiksa</p>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <p class="text-gray-900">3/3 tersedia</p>
+                                    <p class="text-gray-500 text-xs mt-1">Izin: tidak wajib</p>
+                                </td>
+                                <td class="px-4 py-4 text-gray-900">Menunggu</td>
+                                <td class="px-6 py-4 text-right">
+                                    <a href="#" class="font-semibold text-gray-900 hover:underline">Tinjau →</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <!-- Pagination -->
+                    <div class="p-4 border-t border-gray-200 flex justify-between items-center bg-gray-50">
+                        <p class="text-sm text-gray-500">Halaman 1 dari 3</p>
+                        <div class="flex gap-2">
+                            <button class="px-4 py-2 text-sm font-medium border border-gray-300 rounded-lg bg-white hover:bg-gray-50">← Sebelumnya</button>
+                            <button class="px-4 py-2 text-sm font-medium border border-gray-300 rounded-lg bg-white hover:bg-gray-50">Berikutnya →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pemeriksaan Kelayakan -->
+                <div class="bg-[#EEF2FF] border border-[#E0E7FF] rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-1">Pemeriksaan kelayakan</h3>
+                    <p class="text-sm text-gray-600 mb-4">Gunakan kriteria ini untuk semua calon buddy.</p>
+                    <ol class="list-decimal list-inside space-y-3 text-sm text-gray-800">
+                        <li>Cocokkan identitas dan usia 17–30 tahun.</li>
+                        <li>Usia 17 tahun wajib memiliki izin orang tua yang valid. Tunda persetujuan jika belum tersedia.</li>
+                        <li>Tinjau dokumen pendukung dan pemahaman batas peran: bukan psikolog, terapi, atau layanan krisis.</li>
+                    </ol>
+                </div>
+
+            </div>
+
+            <!-- Kolom Kanan (Panel Detail) -->
+            <div class="lg:col-span-1">
+                <div class="bg-white border border-gray-200 rounded-2xl p-6">
+                    
+                    <!-- Header Detail -->
+                    <div class="flex items-center gap-3 mb-4">
+                        <h3 class="text-xl font-bold">Farah</h3>
+                        <span class="text-sm text-gray-500">BD-028</span>
+                    </div>
+                    <span class="inline-block bg-[#EEF2FF] text-[#3730A3] text-xs font-semibold px-3 py-1.5 rounded-md mb-6">Menunggu keputusan</span>
+
+                    <!-- List Info -->
+                    <div class="space-y-4 text-sm mb-6 border-b border-gray-100 pb-6">
+                        <div class="flex">
+                            <span class="w-24 text-gray-500">Layanan</span>
+                            <span class="font-medium">Story / Chat</span>
+                        </div>
+                        <div class="flex">
+                            <span class="w-24 text-gray-500">Usia</span>
+                            <span class="font-medium">22 tahun</span>
+                        </div>
+                        <div class="flex">
+                            <span class="w-24 text-gray-500">Identitas</span>
+                            <span class="font-medium">KTP **** 4821</span>
+                        </div>
+                        <div class="flex">
+                            <span class="w-24 text-gray-500">Kontak</span>
+                            <span class="font-medium text-gray-500">fa***@email.com</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="w-24 text-gray-500">Izin orang tua</span>
+                            <span class="font-medium">Tidak diwajibkan (Usia 18+)</span>
+                        </div>
+                    </div>
+
+                    <!-- Pendukung -->
+                    <div class="mb-6">
+                        <p class="text-gray-500 text-sm mb-2">Pendukung</p>
+                        <p class="text-sm font-medium mb-3">Identitas, profil & pelatihan</p>
+                        <button class="w-full flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-50">
+                            Buka dokumen <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                    <!-- Hasil Pemeriksaan -->
+                    <div class="bg-[#E6F4EA] border border-[#b2dfcc] rounded-xl p-4 mb-6">
+                        <h4 class="font-bold text-gray-900 mb-3">Hasil Pemeriksaan</h4>
+                        <ul class="space-y-2 text-sm text-gray-800">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gray-700"></i> Identitas dan usia sesuai</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gray-700"></i> Dokumen pendukung terbaca</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gray-700"></i> Batas peran buddy dipahami</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tombol Aksi -->
+                    <div class="space-y-3">
+                        <button class="w-full bg-[#A5B4FC] text-gray-900 font-semibold py-3 rounded-lg hover:bg-[#818CF8] transition-colors">Setujui buddy</button>
+                        <div class="flex gap-3">
+                            <button class="flex-1 border border-gray-300 text-gray-800 font-semibold py-3 rounded-lg hover:bg-gray-50 transition-colors">Minta perbaikan</button>
+                            <button class="flex-1 bg-[#FEE2E2] text-[#991B1B] font-semibold py-3 rounded-lg hover:bg-red-200 transition-colors">Tolak</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

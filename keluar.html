@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keluar - TitipCerita Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-[#F3F4F6] font-sans text-gray-900 flex items-center justify-center min-h-screen">
+
+    <!-- Kotak Konfirmasi di Tengah Layar -->
+    <div class="bg-white border border-gray-200 rounded-2xl p-8 max-w-md w-full mx-4 shadow-sm text-center">
+        
+        <!-- Ikon Peringatan/Logout -->
+        <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i data-lucide="log-out" class="w-8 h-8 text-red-500"></i>
+        </div>
+
+        <h2 class="text-2xl font-bold mb-2">Keluar dari Akun?</h2>
+        <p class="text-gray-500 mb-8 text-sm leading-relaxed">
+            Anda harus memasukkan email dan kata sandi kembali untuk bisa mengakses dashboard admin TitipCerita.
+        </p>
+
+        <!-- Tombol Aksi -->
+        <div class="flex gap-3 w-full">
+            <!-- Tombol Batal (Kembali ke Dashboard) -->
+            <a href="index.html" class="flex-1 border border-gray-300 text-gray-700 font-semibold py-2.5 rounded-lg hover:bg-gray-50 transition-colors">
+                Batal
+            </a>
+            <!-- Tombol Keluar (Nanti bisa diarahkan ke halaman login, sementara ke index dulu) -->
+            <a href="index.html" class="flex-1 bg-red-500 text-white font-semibold py-2.5 rounded-lg hover:bg-red-600 transition-colors">
+                Ya, Keluar
+            </a>
+        </div>
+        
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

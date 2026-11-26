@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemesanan - TitipCerita Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-white font-sans text-gray-900 flex">
+
+    <!-- SIDEBAR -->
+    <aside class="w-64 h-screen bg-[#F3F4F6] border-r border-gray-200 flex flex-col justify-between p-4 fixed left-0 top-0">
+        <div>
+            <div class="px-4 py-6">
+                <h1 class="text-2xl font-bold font-mooxy">TitipCerita</h1>
+                <p class="text-xs text-gray-500 font-medium mt-1">ADMIN WORKSPACE</p>
+            </div>
+            <div class="relative mb-6 px-2">
+                <i data-lucide="search" class="absolute left-4 top-2.5 text-gray-400 w-5 h-5"></i>
+                <input type="text" placeholder="Search here..." class="w-full pl-10 pr-4 py-2 bg-white border border-gray-200 rounded-full text-sm focus:outline-none">
+            </div>
+            <nav class="space-y-2">
+                <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-200">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Dashboard
+                </a>
+                <a href="verifikasi.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-200">
+                    <i data-lucide="shield-check" class="w-5 h-5"></i> Verifikasi Buddy
+                </a>
+                <a href="kelola-pengguna.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-200">
+                    <i data-lucide="users" class="w-5 h-5"></i> Kelola Pengguna
+                </a>
+                <a href="laporan-kasus.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-200">
+                    <i data-lucide="file-text" class="w-5 h-5"></i> Laporan Kasus
+                </a>
+                <!-- Menu Pemesanan jadi aktif (warna biru) -->
+                <a href="pemesanan.html" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#DBEAFE] text-blue-900 font-semibold">
+                    <i data-lucide="calendar" class="w-5 h-5"></i> Pemesanan
+                </a>
+            </nav>
+        </div>
+        <div class="space-y-2">
+            <a href="pengaturan.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-200">
+                <i data-lucide="settings" class="w-5 h-5"></i> Pengaturan
+            </a>
+            <a href="keluar.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50">
+                <i data-lucide="log-out" class="w-5 h-5"></i> Keluar
+            </a>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="ml-64 p-8 w-full">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-8">
+            <h2 class="text-lg font-semibold text-gray-800">Operasional</h2>
+            <div class="flex items-center gap-4">
+                <button class="p-2 border border-gray-300 rounded-full hover:bg-gray-50">
+                    <i data-lucide="bell" class="w-5 h-5 text-gray-600"></i>
+                </button>
+                <div class="flex items-center gap-3 border border-gray-300 rounded-full px-4 py-1.5">
+                    <i data-lucide="user-circle" class="w-6 h-6 text-gray-500"></i>
+                    <div>
+                        <p class="text-sm font-semibold leading-none">Rani Putri</p>
+                        <p class="text-xs text-gray-500 mt-0.5">Admin</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Judul Halaman -->
+        <div class="mb-6">
+            <h1 class="text-2xl font-bold">Pemesanan</h1>
+            <p class="text-gray-500 mt-1">Periksa transaksi, cocokkan pembayaran, dan tinjau pengembalian dana</p>
+        </div>
+
+        <!-- Filter Tab -->
+        <div class="flex gap-3 mb-6">
+            <button class="px-4 py-2 bg-[#E6F4EA] text-[#166534] font-medium text-sm rounded-lg border border-[#b2dfcc]">Tanggal</button>
+            <button class="px-4 py-2 bg-white text-gray-600 font-medium text-sm rounded-lg border border-gray-300 hover:bg-gray-50">Semua layanan</button>
+            <button class="px-4 py-2 bg-white text-gray-600 font-medium text-sm rounded-lg border border-gray-300 hover:bg-gray-50">Pembayaran</button>
+            <button class="px-4 py-2 bg-white text-gray-600 font-medium text-sm rounded-lg border border-gray-300 hover:bg-gray-50">Metode</button>
+        </div>
+
+        <!-- Grid Layout (Kiri Tabel, Kanan Detail) -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Kolom Kiri (Tabel & Rangkuman) -->
+            <div class="lg:col-span-2 space-y-6">
+                
+                <!-- Kotak Rangkuman Hari Ini -->
+                <div class="bg-white border border-gray-200 rounded-2xl p-6">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white">
+                            <i data-lucide="sun" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold">Rangkuman hari ini</h3>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="border border-gray-200 rounded-xl p-4">
+                            <p class="text-sm text-gray-500">Total Booking</p>
+                            <p class="text-3xl font-bold mt-2">Rp 95.000</p>
+                        </div>
+                        <div class="border border-gray-200 rounded-xl p-4">
+                            <p class="text-sm text-gray-500">Total Lunas</p>
+                            <p class="text-3xl font-bold mt-2">Rp 75.000</p>
+                        </div>
+                        <div class="border border-gray-200 rounded-xl p-4">
+                            <p class="text-sm text-gray-500">Total refund</p>
+                            <p class="text-3xl font-bold mt-2">Rp 20.000</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabel Pemesanan -->
+                <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden">
+                    <table class="w-full text-sm text-left">
+                        <thead class="border-b border-gray-200 text-gray-500 font-medium bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-4 font-semibold text-gray-700">Booking / Layanan</th>
+                                <th class="px-4 py-4 font-semibold text-gray-700">Pengguna / Buddy / Jadwal</th>
+                                <th class="px-4 py-4 font-semibold text-gray-700">Total / Metode</th>
+                                <th class="px-4 py-4 font-semibold text-gray-700">Pembayaran</th>
+                                <th class="px-6 py-4 text-right font-semibold text-gray-700">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="px-6 py-4">
+                                    <p class="font-semibold text-gray-900">BK-2418</p>
+                                    <p class="text-gray-500 text-xs mt-1">Chat · 30 menit</p>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <p class="text-gray-900">Alya / Nara</p>
+                                    <p class="text-gray-500 text-xs mt-1">18 Okt · 11.00</p>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <p class="text-gray-900">Rp15.000</p>
+                                    <p class="text-gray-500 text-xs mt-1">E-wallet</p>
+                                </td>
+                                <td class="px-4 py-4 text-gray-900">Lunas</td>
+                                <td class="px-6 py-4 text-right">
+                                    <a href="#" class="font-semibold text-gray-900 hover:underline">Detail →</a>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="px-6 py-4">
+                                    <p class="font-semibold text-gray-900">BK-2419</p>
+                                    <p class="text-gray-500 text-xs mt-1">Chat · 1 jam</p>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <p class="text-gray-900">Rani / Nara</p>
+                                    <p class="text-gray-500 text-xs mt-1">18 Okt · 13.00</p>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <p class="text-gray-900">Rp25.000</p>
+                                    <p class="text-gray-500 text-xs mt-1">Transfer bank</p>
+                                </td>
+                                <td class="px-4 py-4 text-gray-900">Lunas</td>
+                                <td class="px-6 py-4 text-right">
+                                    <a href="#" class="font-semibold text-gray-900 hover:underline">Detail →</a>
+                                </td>
+                            </tr>
+                            <!-- Baris Aktif (Warna Hijau Muda) -->
+                            <tr class="border-b border-gray-100 bg-[#F0FDF4]">
+                                <td class="px-6 py-4">
+                                    <p class="font-semibold text-gray-900">BK-2420</p>
+                                    <p class="text-gray-500 text-xs mt-1">Study · 1 jam</p>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <p class="text-gray-900">Bima / Dimas</p>
+                                    <p class="text-gray-500 text-xs mt-1">18 Okt · 14.00</p>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <p class="text-gray-900">Rp20.000</p>
+                                    <p class="text-gray-500 text-xs mt-1">QRIS</p>
+                                </td>
+                                <td class="px-4 py-4 text-gray-900">Review refund</td>
+                                <td class="px-6 py-4 text-right">
+                                    <a href="#" class="font-semibold text-gray-900 hover:underline">Detail →</a>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="px-6 py-4">
+                                    <p class="font-semibold text-gray-900">BK-2421</p>
+                                    <p class="text-gray-500 text-xs mt-1">Study · 2 jam</p>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <p class="text-gray-900">Sinta / Dimas</p>
+                                    <p class="text-gray-500 text-xs mt-1">18 Okt · 16.00</p>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <p class="text-gray-900">Rp35.000</p>
+                                    <p class="text-gray-500 text-xs mt-1">QRIS</p>
+                                </td>
+                                <td class="px-4 py-4 text-gray-900">Lunas</td>
+                                <td class="px-6 py-4 text-right">
+                                    <a href="#" class="font-semibold text-gray-900 hover:underline">Detail →</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <!-- Pagination -->
+                    <div class="p-4 border-t border-gray-200 flex justify-between items-center bg-gray-50">
+                        <p class="text-sm text-gray-500">Halaman 1 dari 1</p>
+                        <div class="flex gap-2">
+                            <button class="px-4 py-2 text-sm font-medium border border-gray-300 rounded-lg bg-white hover:bg-gray-50">← Sebelumnya</button>
+                            <button class="px-4 py-2 text-sm font-medium border border-gray-300 rounded-lg bg-white hover:bg-gray-50">Berikutnya →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kolom Kanan (Panel Detail) -->
+            <div class="lg:col-span-1">
+                <div class="bg-white border border-gray-200 rounded-2xl p-6">
+                    
+                    <!-- Header Detail -->
+                    <div class="mb-4">
+                        <h3 class="text-xl font-bold">Detail BK – 2420</h3>
+                        <p class="text-sm text-gray-500 mt-1">Study · 1 jam · 18 Oktober 2026</p>
+                    </div>
+                    
+                    <!-- Badge Review Refund -->
+                    <span class="inline-block bg-[#FEF2F2] text-[#991B1B] text-xs font-semibold px-3 py-1.5 rounded-md mb-6">Review Refund</span>
+
+                    <!-- Info List -->
+                    <div class="space-y-3 text-sm mb-6 border-b border-gray-100 pb-6">
+                        <div class="flex">
+                            <span class="w-28 text-gray-500">Pengguna</span>
+                            <span class="font-medium">Bima · U-1048</span>
+                        </div>
+                        <div class="flex">
+                            <span class="w-28 text-gray-500">Buddy</span>
+                            <span class="font-medium">Dimas · U-1038</span>
+                        </div>
+                        <div class="flex">
+                            <span class="w-28 text-gray-500">Jadwal</span>
+                            <span class="font-medium">18 Okt 2026 · 14.00–15.00 WIB</span>
+                        </div>
+                        <div class="flex">
+                            <span class="w-28 text-gray-500">Status sesi</span>
+                            <span class="font-medium">Dibatalkan · 10.02 WIB</span>
+                        </div>
+                        <div class="flex">
+                            <span class="w-28 text-gray-500">Total</span>
+                            <span class="font-medium">Rp20.000</span>
+                        </div>
+                        <div class="flex">
+                            <span class="w-28 text-gray-500">Metode</span>
+                            <span class="font-medium">QRIS · TRX-8820</span>
+                        </div>
+                        <div class="flex">
+                            <span class="w-28 text-gray-500">Pembayaran</span>
+                            <span class="font-medium">Diterima 09.41 · Rp20.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Tombol Bukti Pembayaran -->
+                    <button class="w-full flex items-center justify-center gap-2 border border-gray-300 text-gray-800 font-medium py-2.5 rounded-lg hover:bg-gray-50 transition-colors mb-6">
+                        Lihat Bukti Pembayaran <i data-lucide="external-link" class="w-4 h-4 text-gray-500"></i>
+                    </button>
+
+                    <!-- Info Peninjauan -->
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-900">Peninjauan refund</h4>
+                        <p class="text-sm text-gray-600 mt-1">Sesi dibatalkan oleh buddy sebelum dimulai. Pengguna meminta pengembalian dana penuh.</p>
+                    </div>
+
+                    <!-- Box Nominal -->
+                    <div class="border border-gray-200 rounded-lg p-3 mb-6 bg-gray-50">
+                        <p class="text-xs text-gray-500 mb-1">Nominal pengembalian</p>
+                        <p class="text-sm font-medium">Rp20.000</p>
+                        <p class="text-xs text-gray-400 mt-1">Sesuai total pembayaran, tidak melebihi transaksi asli.</p>
+                    </div>
+
+                    <!-- Tombol Aksi -->
+                    <div class="space-y-3">
+                        <button class="w-full bg-[#A5B4FC] text-gray-900 font-semibold py-3 rounded-lg hover:bg-[#818CF8] transition-colors">Tinjau & Konfirmasi refund</button>
+                        <div class="flex gap-3">
+                            <button class="flex-1 border border-gray-300 text-gray-800 font-semibold py-2.5 rounded-lg hover:bg-gray-50 transition-colors">Minta bukti tambahan</button>
+                            <button class="flex-1 bg-[#FEE2E2] text-[#991B1B] font-semibold py-2.5 rounded-lg hover:bg-red-200 transition-colors">Tolak refund</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

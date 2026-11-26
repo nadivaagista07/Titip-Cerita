@@ -1,0 +1,12 @@
+/* Font Mooxy */
+@font-face {
+    font-family: 'Mooxy';
+    src: url('./assets/MooxyRegular-8Ow2Z.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Class khusus untuk logo */
+.font-mooxy {
+    font-family: 'Mooxy', sans-serif !important;
+}
